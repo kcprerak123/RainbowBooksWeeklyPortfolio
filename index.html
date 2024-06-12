@@ -3,82 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rainbow Books</title>
+    <title>Home - Rainbow Books</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            position: relative;
+            padding-right: 20px;
+            margin-top: 20px;
+        }
+
+        .dropdown {
+            float: right;
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            z-index: 1;
+            right: 0;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: black;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .content {
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Rainbow Books</h1>
-        <nav class="navbar">
-            <div class="dropdown">
-                <button class="dropbtn">Menu</button>
-                <div class="dropdown-content">
-                    <a href="home.html">Home</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <div class="books-container">
-            <div class="book" id="book1">
-                <img src="lortr.jpg" alt="LOTR Image">
-                <h2>Lord Of The Rings</h2>
-                <p>The Lord of the Rings is the saga of a group of sometimes reluctant heroes who set forth to save their world from consummate evil. Its many worlds and creatures were drawn from Tolkien’s extensive knowledge of philology and folklore</p>
-                <button onclick="addToCart('Lord of The Rings')">Add to Cart</button>
-            </div>
-            <div class="book" id="book2">
-                <img src="higuide.jpg" alt="higuide">
-                <h2>Hitchhiker's Guide to the Galaxy</h2>
-                <p>The novel is an adaptation of the first four parts of Adams's radio series of the same name, centering on the adventures of the only man to survive the destruction of Earth; while roaming outer space, he comes to learn the truth behind Earth's existence.
-
-                </p>
-                <button onclick="addToCart('Hitchhikers Guide to the Galaxy')">Add to Cart</button>
-            </div>
-            <div class="book" id="book3">
-                <img src="gstili.jpg" alt="gstili">
-                <h2>Geronimo Stilton</h2>
-                <p>Geronimo Stilton, also known in the books by his surname, Stilton, is the main character of the Geronimo Stilton book series, an anthropomorphic mouse and its TV adaptation. He works as the head editor and publisher of his newspaper company, The Rodent's Gazette</p>
-                <button onclick="addToCart('Geronimo Stilton')">Add to Cart</button>
-            </div>
-        </div>
-        <div class="cart">
-            <h2>Shopping Cart</h2>
-            <ul id="cartItems"></ul>
-            <button onclick="window.location.href = 'payment.html'">Proceed to Payment</button>
-        </div>
+    <div class="content">
+        <h1>Welcome to Rainbow Books</h1>
+        <p>Your ultimate destination for all your reading needs!</p>
+        <button onclick="location.href='browse.html';">
+            <img src="book.png" alt="Book Icon" class="book1"> View Books
+        </button>
     </div>
-
-    <script>
-        let cart = [];
-
-        function addToCart(bookTitle) {
-            cart.push(bookTitle);
-            updateCartDisplay();
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartDisplay();
-        }
-
-        function updateCartDisplay() {
-            const cartItemsElement = document.getElementById('cartItems');
-            cartItemsElement.innerHTML = '';
-            cart.forEach((item, index) => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                const removeButton = document.createElement('button');
-                removeButton.textContent = 'Remove';
-                removeButton.onclick = () => removeFromCart(index);
-                li.appendChild(removeButton);
-                cartItemsElement.appendChild(li);
-            });
-        }
-
-        function proceedToPayment() {
-            alert('Proceeding to payment for: ' + cart.join(', '));
-        }
-    </script>
 </body>
 </html>
